@@ -1,40 +1,69 @@
 const express = require('express');
-const logger = require('../logger/logger')
-
 const router = express.Router();
-const helper = require('../util/helper')
-const format = require('../validator/formatter')
-const lodash = require('lodash')
 
 
-router.get('/test-me', function (req, res) {
-   helper.date()
-   helper.month()
-   helper.batch()
-logger.logging()
-format.trimming()
-format.upper()
-format.lower()
-    res.send('My first ever api!')
+let movie = ["morbius", "perfect world", "seven stars", "iron man"]
+
+router.get('/movie', function (req, res) {
+  
+  res.send(movie)
 });
 
-router.get('/hello', function(req,res) {
-    let months = ['jan','feb','march','april','may','june','july','august','sep','oct','nov','dec']
-    let subArray = lodash.chunk(months, 3)
-    console.log('the result of months: ',subArray)
-    let oddNumbers = [1,3,5,7,9,11,13,15,17,19]
-    console.log('the last 9 odd number:', lodash.tail(oddNumbers))
-    let a = [1,3,6,8,454,5]
-    let b = [56,12,46,31,54]
-    let c = [32,54,68,99,89,89,98]
-    let d = [45,87,846,4,5,1,5,5]
-    let e = [879,78,8,7456,3]
-    console.log('unique number is',lodash.union(a,b,c,d,e))
-    let arrayKeyValuePairs = [["horror","The Shining"],["drama","Titanic'"],["thriller","Shutter Island"],["fantasy","Pans Labyrinth"]]
-    console.log("the final key value is:", lodash.fromPairs(arrayKeyValuePairs))
-    res.send('my second api!')
-});
+router.get('/movies/:indexNumber', function (req, res) {
+    const movies = ["morbius", "perfect world", "seven stars", "iron man"]
+    let i = req.params.indexNumber
+    if(i<movies.length){
+        res.send(movies[i])
+    }
+    else{
+        res.send('use valid index')
+    }
+  });
 
+//   router.get('/films', function(req,res){
+//       const film = [ {
+//         "id": 1,
+//         "nam": "The Shining"
+//        }, {
+//         "id": 2,
+//         "nam": "Incendies"
+//        }, {
+//         "id": 3,
+//         "nam": "Rang de Basanti"
+//        }, {
+//         "id": 4,
+//         "nam": "Finding Nemo"
+//        }]
+
+//        res.send(film)
+       
+//   });
+
+  router.get('/film/:filmId', function(req,res){
+
+    const film = [ {
+        "id": 1,
+        "nam": "The Shining"
+       }, {
+        "id": 2,
+        "nam": "Incendies"
+       }, {
+        "id": 3,
+        "nam": "Rang de Basanti"
+       }, {
+        "id": 4,
+        "nam": "Finding Nemo"
+       }]
+
+       let i =req.params.filmId;
+     if(i<film.length){
+         res.send(film[i])
+     }
+     else{
+         res.send('not a valid input')
+     }
+      
+  })
 
 module.exports = router;
 
