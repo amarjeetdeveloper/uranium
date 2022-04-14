@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const authorSchema = new mongoose.Schema( {
-    author_id:{
+    author_id : {
         type:Number,
         required:true
     },
