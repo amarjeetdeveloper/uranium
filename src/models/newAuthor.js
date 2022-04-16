@@ -6,7 +6,7 @@ const newAuthorSchema = new mongoose.Schema( {
     _id: {
     type:ObjectId,
     ref:"LibraryBook"
-         },
+    },
     author_name: String,
     age:Number,
     address:String,
