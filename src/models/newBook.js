@@ -4,6 +4,10 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 const bookSchema = new mongoose.Schema( {
     _id: ObjectId,
     name: String,
+    isHardCover: {
+        type: Boolean,
+        default:false
+    },
     author:  {
         type: ObjectId,
         ref: "Author"

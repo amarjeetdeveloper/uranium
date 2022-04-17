@@ -39,10 +39,33 @@ const createBook= async function (req, res) {
                             //   solution 4
 const getBooksWithAuthorDetails = async function (req, res) {
     let specificAuthor = await bookModel.find({_id:"61951bfa4d9fe0d34da86344"}).populate("author publisher")
-    res.send({data: specificAuthor})
-    
+    res.send({data: specificAuthor})   
 }
+
+                                    //  solution 5 (a)
+const updateKey = async function(req,res){
+  let update = await bookModel.updateOne({publisher:"61951bfa4d9fe0d34da84523" },{isHardCover:true});
+  res.send({data:update})
+}
+
+const updatetrue = async function(req,res){
+  let update = await bookModel.updateOne({publisher:"61951bfa4d9fe0d34da84526" },{isHardCover:true});
+  res.send({data:update})
+}
+
+
+const updatePrice = async function(req,res){
+  let price = await bookModel.find({"ratings":{$gt:3}}).updateMany({"price":954})
+  res.send({data:price})
+}
+
 
 module.exports.createBook= createBook
 
 module.exports.getBooksWithAuthorDetails = getBooksWithAuthorDetails
+
+module.exports.updateKey = updateKey
+
+module.exports.updatetrue = updatetrue
+
+module.exports.updatePrice = updatePrice
