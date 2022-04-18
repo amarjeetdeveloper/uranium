@@ -42,7 +42,7 @@ const fetchbooks = async function (req, res) {
 }
 
 const updateBooks = async function (req, res) {
-    // update hardcover to true for few books
+    // update hardcover to true for few books hint 
     let hardCOverPublishers = await publisherModel.find({name : {$in:['Penguin','HarperCollins'] }}).select({_id:1})
     let arrayOfPublishers = []
     
