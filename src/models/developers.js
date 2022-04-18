@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
  
 const developerSchema = new mongoose.Schema( {
    name: String,
-   gender:String,
+   gender:{
+      type:String,
+     enum:["male", "female", "other"]
+   },
    percentage:Number,
    batch:{
    type:ObjectId

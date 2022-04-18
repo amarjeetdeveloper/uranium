@@ -18,7 +18,7 @@ const developers= async function (req, res) {
    const getName = req.query.name
    const getPercentage = req.query.percentage
    const getBatchId = await batchModel.find({name:getName}).select({_id:1})
-   const getDeveloper = await developerModel.find({batch:getBatchId, percentage:{$gt:getPercentage}})
+   const getDeveloper = await developerModel.find({batch:getBatchId, percentage:{$gte:getPercentage}})
   res.send({msg:getDeveloper})
 }
 
