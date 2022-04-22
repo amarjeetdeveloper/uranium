@@ -6,4 +6,4 @@ const productSchema = new mongoose.Schema( {
     price: Number
 }, { timestamps: true });
 
-module.exports = mongoose.model('MwProduct', productSchema) //users
+module.exports = mongoose.model('MwProduct', productSchema) //mwprosuct
