@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema( {
     age: Number,
     posts: {
         type:[],
-        default:["you are in the posts"]
+        default:[]
     }
 }, { timestamps: true });
 
