@@ -199,3 +199,29 @@ second ka 3        let getSortTemp = async function (req, res) {
     res.status(500).send({ Error: err.message })
 }
 }
+
+
+
+
+second ka 3        let getSortTemp = async function (req, res) {
+    try {
+        let cities = ["Bengaluru", "Mumbai", "Delhi", "Kolkata", "Chennai", "London", "Moscow"]
+        let tempCities = [];
+        for (i = 0; i < cities.length; i++) {
+            let Obj = { city: cities[i] }
+            let options = {
+                method: 'get',
+                url: `http://api.openweathermap.org/data/2.5/weather?q=${cities[i]}&appid=d4d8d60307b7c562b9da95dbc814dd0b`
+            }
+            let result = await axios(options)
+            Obj.temp = result.data.main.temp
+            tempCities.push(Obj)
+            console.log(Obj)
+        }
+        let sortByTemp = tempCities.sort(function (a, b) { return a.temprature - b.temprature})
+        res.status(200).send({ data: sortByTemp})
+    }catch (err) {
+    res.status(500).send({ Error: err.message })
+}
+}
+
